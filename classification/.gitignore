@@ -1,0 +1,5 @@
+*.pyc
+*.slurm
+logs/
+results/
+wandb/*
