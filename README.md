@@ -1,5 +1,5 @@
 
-![header](https://capsule-render.vercel.app/api?type=waving&height=140&color=gradient&text=BRAVE:&section=header&fontAlign=12&fontSize=45&textBg=false&descAlignY=45&fontAlignY=20&descSize=23&desc=ABreast%20Vision%20Pathology%20Foundation%20Model%20for%20Real-world%20Clinical%20Utility&descAlign=52)
+![header](https://capsule-render.vercel.app/api?type=waving&height=140&color=gradient&text=BRAVE:&section=header&fontAlign=12&fontSize=45&textBg=false&descAlignY=45&fontAlignY=20&descSize=23&desc=A%20Breast%20Vision%20Pathology%20Foundation%20Model%20for%20Real-world%20Clinical%20Utility&descAlign=52)
 ---
 
 ## Table of Contents
