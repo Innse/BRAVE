@@ -1,5 +1,7 @@
 
 ![header](https://capsule-render.vercel.app/api?type=waving&height=140&color=gradient&text=BRAVE:&section=header&fontAlign=12&fontSize=45&textBg=false&descAlignY=45&fontAlignY=20&descSize=23&desc=A%20Breast%20Vision%20Pathology%20Foundation%20Model%20for%20Real-world%20Clinical%20Utility&descAlign=52)
+[![Hugging face](https://img.shields.io/badge/%F0%9F%A4%97%20%20-BRAVE-yellow)](https://huggingface.co/Innse76/BRAVE)
+[![X (formerly Twitter) Follow](https://img.shields.io/twitter/follow/SMARTLab_HKUST%20)](https://x.com/SMARTLab_HKUST)
 ---
 
 ## Table of Contents
