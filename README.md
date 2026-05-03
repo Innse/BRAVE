@@ -1,10 +1,9 @@
 
 ![header](https://capsule-render.vercel.app/api?type=waving&height=140&color=gradient&text=BRAVE:&section=header&fontAlign=12&fontSize=45&textBg=false&descAlignY=45&fontAlignY=20&descSize=23&desc=A%20Breast%20Vision%20Pathology%20Foundation%20Model%20for%20Real-world%20Clinical%20Utility&descAlign=52)
-[![Hugging face](https://img.shields.io/badge/%F0%9F%A4%97%20%20-BRAVE-yellow)](https://huggingface.co/Innse76/BRAVE)
 [![Demo](https://img.shields.io/badge/Demo-Live%20Preview-blue?logo=data%3Aimage%2Fsvg%2Bxml%3Bbase64%2CPHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxNiIgaGVpZ2h0PSIxNiIgdmlld0JveD0iMCAwIDE2IDE2Ij48Y2lyY2xlIGN4PSI4IiBjeT0iOCIgcj0iNyIgZmlsbD0iI2ZmZmZmZiIvPjxwYXRoIGQ9Ik02IDQuNzV2Ni41bDUtMy4yNS01LTMuMjVaIiBmaWxsPSIjMUE3M0U4Ii8%2BPC9zdmc%2B&logoColor=white)](https://smartpathology.top/login)
 [![X (formerly Twitter) Follow](https://img.shields.io/twitter/follow/SMARTLab_HKUST%20)](https://x.com/SMARTLab_HKUST)
 
-> ❗️❗️ To request model weights or try the demo, please click the logo above and contact [Yingxue XU](mailto:yxueb@connect.ust.hk) for approval and a trial account.
+> ❗️❗️ Model weights are temporarily not publicly available. Weights for reviewer evaluation can be accessed via [Onedrive](https://hkustconnect-my.sharepoint.com/:u:/r/personal/yxueb_connect_ust_hk/Documents/project/BRAVE/ckpt/brave.pth?csf=1&web=1&e=e1m5gy). To request a demo trial account or ask about access, please contact [Yingxue Xu](mailto:yxueb@connect.ust.hk).
 
 ---
 
@@ -115,12 +114,6 @@ A convenience script is provided at `pretrain/run.sh` — edit the path variable
 | `--saveckp_freq` | `20` | Save a checkpoint every N epochs. |
 
 ### Architecture & Training Mode
-
-BRAVE uses **Virchow2** as the backbone, loaded via `timm` from `hf-hub:paige-ai/Virchow2`. Pre-trained weights are downloaded automatically on first use. Requires a Hugging Face token with access to the model:
-
-```bash
-huggingface-cli login
-```
 
 Only **LoRA** (Low-Rank Adaptation) is used for fine-tuning. The LoRA config:
 
