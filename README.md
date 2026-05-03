@@ -3,7 +3,7 @@
 [![Demo](https://img.shields.io/badge/Demo-Live%20Preview-blue?logo=data%3Aimage%2Fsvg%2Bxml%3Bbase64%2CPHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxNiIgaGVpZ2h0PSIxNiIgdmlld0JveD0iMCAwIDE2IDE2Ij48Y2lyY2xlIGN4PSI4IiBjeT0iOCIgcj0iNyIgZmlsbD0iI2ZmZmZmZiIvPjxwYXRoIGQ9Ik02IDQuNzV2Ni41bDUtMy4yNS01LTMuMjVaIiBmaWxsPSIjMUE3M0U4Ii8%2BPC9zdmc%2B&logoColor=white)](https://smartpathology.top/login)
 [![X (formerly Twitter) Follow](https://img.shields.io/twitter/follow/SMARTLab_HKUST%20)](https://x.com/SMARTLab_HKUST)
 
-> ❗️❗️ Model weights are temporarily not publicly available. Weights for reviewer evaluation can be accessed via [Onedrive](https://hkustconnect-my.sharepoint.com/:u:/r/personal/yxueb_connect_ust_hk/Documents/project/BRAVE/ckpt/brave.pth?csf=1&web=1&e=e1m5gy). To request a demo trial account or ask about access, please contact [Yingxue Xu](mailto:yxueb@connect.ust.hk).
+> ❗️❗️ Model weights are temporarily not publicly available. Weights for reviewer evaluation can be accessed via [OneDrive](https://hkustconnect-my.sharepoint.com/:u:/r/personal/yxueb_connect_ust_hk/Documents/project/BRAVE/ckpt/brave.pth?csf=1&web=1&e=e1m5gy). To request a demo trial account or ask about access, please contact [Yingxue Xu](mailto:yxueb@connect.ust.hk).
 
 ---
 
