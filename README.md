@@ -33,22 +33,26 @@
 
 ### Requirements
 
-```
-torch >= 2.0
-torchvision
-timm
-peft
-loralib
-h5py
-wandb
-numpy
-Pillow
-```
-
-Install dependencies:
+Create the recommended environment from the repository file:
 
 ```bash
-pip install torch torchvision timm peft loralib h5py wandb numpy Pillow
+conda env create -f pretrain/environment.yml
+conda activate brave
+```
+
+Dependencies in the repository pretraining environment include:
+
+```text
+Python 3.9
+torch 2.7.1
+torchvision 0.22.1
+timm 1.0.19
+peft 0.17.0
+loralib 0.1.2
+h5py 3.14.0
+wandb 0.21.0
+numpy 1.26.4
+Pillow 11.3.0
 ```
 
 ### Data Preparation
@@ -208,10 +212,10 @@ Then make sure `classification/splits/datasets.xlsx` contains a row like:
 |---|---|
 | `TCGA-BRCA` | `/data/pathology_features/TCGA-BRCA` |
 
-You can launch the provided subtype classification example with the `diagnosis` environment:
+You can launch the provided subtype classification example with the repository classification environment:
 
 ```bash
-conda activate diagnosis
+conda activate brave-cls
 CUDA_VISIBLE_DEVICES=0 python classification/main.py \
     --study TCGA-SurPost_Breast_PathSubtype \
     --feature virchow2 \
@@ -419,28 +423,94 @@ During training, the code logs train/validation/test loss and C-index to Weights
 
 ## System Requirements
 
-### OS and Python
+### Pretraining Pipeline
 
-- OS: Linux is recommended.
-- Python: use Python 3.10 for the survival pipeline.
-- For pretraining and classification, use the provided environment files in this repository.
+- Recommended repository environment: `brave`
+- Recommended setup file: `pretrain/environment.yml`
+- Tested operating system: Ubuntu 22.04.3 LTS
+- Tested Python: 3.9.23
+- Tested CUDA: 12.8
+- Tested hardware: 8 × NVIDIA H800
+- Dependencies:
+  - `torch==2.7.1`
+  - `torchvision==0.22.1`
+  - `timm==1.0.19`
+  - `peft==0.17.0`
+  - `loralib==0.1.2`
+  - `h5py==3.14.0`
+  - `wandb==0.21.0`
+  - `numpy==1.26.4`
+  - `Pillow==11.3.0`
+  - `huggingface-hub==0.34.3`
+  - `xformers==0.0.31.post1`
+  - `submitit==1.5.3`
+  - `transformers==4.54.1`
+  - `torchmetrics==0.10.3`
 
-### GPU Support
 
-- A CUDA-capable GPU is recommended for practical training and inference.
-- Classification and survival pipelines support single-GPU execution.
-- Pretraining is designed for multi-GPU execution, and a multi-GPU setup is recommended.
+### Classification Pipeline
 
-### Tested Versions
+- Recommended repository environment: `brave-cls`
+- Recommended setup file: `classification/environment.yml`
+- Tested operating system: Ubuntu 22.04.5 LTS
+- Tested Python: 3.13.2
+- Tested CUDA runtime: 11.8
+- Tested hardware: single NVIDIA GeForce RTX 3090
+- Dependencies in the repository environment:
+  - `torch==2.6.0+cu118`
+  - `torchvision==0.21.0+cu118`
+  - `torchmetrics==1.8.0`
+  - `h5py==3.14.0`
+  - `numpy==2.1.2`
+  - `openpyxl==3.1.5`
+  - `pandas==2.3.1`
+  - `pillow==11.0.0`
+  - `tqdm==4.67.1`
+  - `wandb==0.21.0`
 
-- The survival pipeline has been tested with Python 3.10.
-- The other pipelines are intended to run with the environment files included in this repository.
+### Survival Pipeline
+
+- Recommended repository environment: `brave-survival`
+- Recommended setup: create a Python 3.10 environment, then install `survival/requirements.txt`
+- Tested operating system: Ubuntu 22.04.5 LTS
+- Tested Python: 3.10.12
+- Tested hardware: single NVIDIA GeForce RTX 3090
+- Dependencies from `survival/requirements.txt`:
+  - `apex==0.9.10dev`
+  - `einops==0.8.1`
+  - `fairscale==0.4.13`
+  - `fairseq==0.12.2`
+  - `flash_attn==2.8.3`
+  - `h5py==3.13.0`
+  - `huggingface_hub==0.30.2`
+  - `matplotlib==3.10.7`
+  - `monai==1.5.1`
+  - `numpy==2.3.4`
+  - `openslide_python==1.4.2`
+  - `pandas==2.3.3`
+  - `Pillow==12.0.0`
+  - `psutil==7.0.0`
+  - `PyYAML==6.0.2` or `PyYAML==6.0.3`
+  - `scikit_learn==1.7.2`
+  - `scikit_survival==0.24.1`
+  - `scipy==1.16.3`
+  - `skimage==0.0`
+  - `timm==1.0.22`
+  - `torch==2.6.0`
+  - `torchmetrics==1.7.1`
+  - `torchvision==0.21.0`
+  - `tqdm==4.67.1`
+  - `xformers==0.0.33`
 
 ### Hardware Requirements
 
 - No proprietary or custom hardware is required.
 - A CUDA-capable GPU is required for practical training and inference.
+- Classification and survival support single-GPU execution.
 - Multi-GPU hardware is recommended for pretraining.
+
+Full dependency specifications are provided in the corresponding environment files.
+
 
 ---
 
