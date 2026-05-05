@@ -25,6 +25,7 @@
   - [Data Preparation](#data-preparation-2)
   - [Training](#training-2)
   - [Output](#output-2)
+- [System Requirements](#system-requirements)
 - [Environments Summary](#environments-summary)
 - [License and Terms of Tuse](#license-and-terms-of-tuse)
 
@@ -175,8 +176,55 @@ Each classification task is defined by an Excel file in `classification/excels/`
 | `dataset` | Dataset name (must match a row in `datasets.xlsx`) |
 | `case` | Case/patient identifier |
 | `slide` | Slide filename (`.svs` or `.ndpi`); multiple slides per case separated by `/` |
+| `class` | Human-readable class name, such as `IDC` or `ILC` |
 | `label` | Integer class index |
 | `split` | `train`, `val`, or `test` |
+
+For `classification/excels/TCGA-SurPost_Breast_PathSubtype.xlsx`, the actual schema is:
+
+| dataset | case | slide | class | label | split |
+|---|---|---|---|---|---|
+| `TCGA-BRCA` | `TCGA-AO-A03T` | `TCGA-AO-A03T-01Z-00-DX1.8B75E203-6DC8-4AC9-A256-6FCB818DA0DD` | `IDC` | `0` | `test` |
+| `TCGA-BRCA` | `TCGA-AC-A3W6` | `TCGA-AC-A3W6-01Z-00-DX1.88CC534C-F032-4E5D-9CC4-4BB50AA46880` | `ILC` | `1` | `test` |
+
+The file contains 1053 rows in total, with splits `train`, `val`, and `test`, and labels `0` and `1`.
+
+#### Example: run the TCGA subtype demo
+
+Suppose your pre-extracted features are stored at:
+
+```text
+/data/pathology_features/TCGA-BRCA/
+  pt_files/
+    virchow2/
+      TCGA-AO-A03T-01Z-00-DX1.8B75E203-6DC8-4AC9-A256-6FCB818DA0DD.pt
+      TCGA-AC-A3W6-01Z-00-DX1.88CC534C-F032-4E5D-9CC4-4BB50AA46880.pt
+      ...
+```
+
+Then make sure `classification/splits/datasets.xlsx` contains a row like:
+
+| Dataset | Feature Path |
+|---|---|
+| `TCGA-BRCA` | `/data/pathology_features/TCGA-BRCA` |
+
+You can launch the provided subtype classification example with the `diagnosis` environment:
+
+```bash
+conda activate diagnosis
+CUDA_VISIBLE_DEVICES=0 python classification/main.py \
+    --study TCGA-SurPost_Breast_PathSubtype \
+    --feature virchow2 \
+    --seed 0 \
+    --all_datasets classification/splits/datasets.xlsx \
+    --excel_file classification/excels/TCGA-SurPost_Breast_PathSubtype.xlsx \
+    --model ABMIL \
+    --num_epoch 50 \
+    --early_stop 10 \
+    --wandb_mode offline
+```
+
+This command trains an ABMIL classifier on the `train` split, monitors the `val` split, and reports final metrics on the `test` split defined in the example Excel file.
 
 ### Training
 
@@ -366,6 +414,33 @@ Each fold gets its own subdirectory:
 - `result.csv` — aggregated cross-validation results
 
 During training, the code logs train/validation/test loss and C-index to Weights & Biases.
+
+---
+
+## System Requirements
+
+### OS and Python
+
+- OS: Linux is recommended.
+- Python: use Python 3.10 for the survival pipeline.
+- For pretraining and classification, use the provided environment files in this repository.
+
+### GPU Support
+
+- A CUDA-capable GPU is recommended for practical training and inference.
+- Classification and survival pipelines support single-GPU execution.
+- Pretraining is designed for multi-GPU execution, and a multi-GPU setup is recommended.
+
+### Tested Versions
+
+- The survival pipeline has been tested with Python 3.10.
+- The other pipelines are intended to run with the environment files included in this repository.
+
+### Hardware Requirements
+
+- No proprietary or custom hardware is required.
+- A CUDA-capable GPU is required for practical training and inference.
+- Multi-GPU hardware is recommended for pretraining.
 
 ---
 
