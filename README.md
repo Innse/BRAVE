@@ -509,6 +509,19 @@ During training, the code logs train/validation/test loss and C-index to Weights
 - Classification and survival support single-GPU execution.
 - Multi-GPU hardware is recommended for pretraining.
 
+### Typical Install Time
+
+- Reference machine for classification and survival: Ubuntu 22.04.5 LTS, Intel Xeon Gold 5220R, about 1.0 TiB RAM, and a single NVIDIA GeForce RTX 3090 24 GB GPU.
+- Reference machine for pretraining: Ubuntu 22.04.3 LTS with 8 × NVIDIA H800 GPUs.
+- Approximate install time is typically 5-15 minutes for the classification environment, 10-20 minutes for the survival environment, and 10-30 minutes for the pretraining environment.
+- Actual install time depends on network speed, package mirrors, and whether packages are already cached.
+
+### Expected Demo Runtime
+
+- On the classification reference machine above, the demo with pre-extracted features typically takes about 20-60 minutes.
+- Survival runtime varies substantially with dataset size and fold count; a small validation-style run is typically on the order of tens of minutes, while a full 5-fold run can take several hours.
+- On the pretraining reference machine above, as a reference, 10,000 iterations take about 3.1-3.6 hours.
+
 Full dependency specifications are provided in the corresponding environment files.
 
 
